@@ -2,7 +2,12 @@
 <resources>
 
     <string name="app_name">NYC Adventure Generator</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+
+    <string name="consumer_key">j70zwvMJOtVele0PZesByA</string>
+    <string name="consumer_secret">_UB1U6CVBwyMgbX_TxjvjeN3toc</string>
+    <string name="token">h1jYhtSLoqFNX49nvJbs_WnNRbPUhrJe</string>
+    <string name="token_secret">lSC1uwU--gC0b1sAVaZcLkGQiBE</string>
 
 </resources>
