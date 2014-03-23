@@ -21,8 +21,8 @@ public class Yelp {
 
   OAuthService service;
   Token accessToken;
-  
-  
+
+
   public static Yelp getYelp(Context context) {
 	  return new Yelp(context.getString(R.string.consumer_key), context.getString(R.string.consumer_secret),
 			  context.getString(R.string.token), context.getString(R.string.token_secret));
