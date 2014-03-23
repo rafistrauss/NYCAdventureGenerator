@@ -9,5 +9,14 @@
     <string name="consumer_secret">_UB1U6CVBwyMgbX_TxjvjeN3toc</string>
     <string name="token">h1jYhtSLoqFNX49nvJbs_WnNRbPUhrJe</string>
     <string name="token_secret">lSC1uwU--gC0b1sAVaZcLkGQiBE</string>
+    <string name="parks">Parks</string>
+    <string name="museums">Museums</string>
+    <string name="shopping">Shopping</string>
+    <string name="monuments">Monuments</string>
+    <string name="public_transportation">Public transportation</string>
+    <string name="bars">Bars</string>
+    <string name="start">Create walk</string>
+    <string name="audible_button">Redo</string>
+    <string name="accept_button">Start</string>
 
 </resources>
