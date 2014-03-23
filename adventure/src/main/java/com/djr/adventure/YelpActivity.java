@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -19,20 +20,23 @@ public class YelpActivity extends Activity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_index);
-
+//        setContentView(R.layout.activity_index);
+          setContentView(R.layout.directions_fragment);
+        Log.v("YelpActivity","Created YelpActivity");
 
         mSearchResultsText = (TextView)findViewById(R.id.searchResults);
 
-        new AsyncTask<String, Void, String>() {
+        new AsyncTask<Void, Void, String>() {
 
             private Exception exception;
 
             @Override
-            protected String doInBackground(String... urls) {
+            protected String doInBackground(Void... urls) {
                 Yelp y = Yelp.getYelp(YelpActivity.this);
                 String s = y.search("MOMA", 40.769280, -74.005185);
+                Log.w("YelpActivity", "Returned string is " + s);
                 try {
+
                     return processJson(s);
                 } catch (JSONException e) {
                     return s;
@@ -43,6 +47,7 @@ public class YelpActivity extends Activity {
             protected void onPostExecute(String result) {
                 mSearchResultsText.setText(result);
                 setProgressBarIndeterminateVisibility(false);
+                Log.w("YelpActivity", "onPostExecute called. String param 'result' is " + result);
             }
         }.execute();
     }

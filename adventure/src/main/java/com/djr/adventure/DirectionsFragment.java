@@ -16,6 +16,10 @@ public class DirectionsFragment extends Fragment {
 	@Override 
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.directions_fragment, parent, false);
+
+        YelpActivity ya = new YelpActivity();
+
+
 		return v;
 	}
 		
