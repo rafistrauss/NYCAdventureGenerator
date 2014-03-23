@@ -46,7 +46,6 @@ public class YelpActivity extends Activity {
                     setProgressBarIndeterminateVisibility(false);
                 }
                 catch (NullPointerException e) {
-                    return;
                 }
             }
         }.execute();

@@ -8,6 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
+
 public class MapFragment extends Fragment {
 
     private Button mRedoButton;
@@ -18,10 +21,17 @@ public class MapFragment extends Fragment {
 		super.onCreate(savedInstanceState);
 
 	}
+
+    private GoogleMap map;
 		
 	@Override 
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.map_fragment, parent, false);
+
+
+        map = ((SupportMapFragment) getFragmentManager().findFragmentById(R.id.map_fragment)).getMap();
+
+
 
         Typeface roboto = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Regular.ttf");
 

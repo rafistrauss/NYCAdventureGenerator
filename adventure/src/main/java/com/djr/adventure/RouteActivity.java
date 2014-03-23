@@ -4,7 +4,8 @@ import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.widget.Adapter;
+
+
 
 public class RouteActivity extends FragmentActivity {
 	
@@ -17,7 +18,8 @@ public class RouteActivity extends FragmentActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_route);
-		
+
+
 		// Initialize 
 		actionBar = getActionBar();
 		mViewPager = (ViewPager)findViewById(R.id.pager);
