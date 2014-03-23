@@ -14,8 +14,12 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 
+import java.util.HashMap;
+
 public class IndexActivity extends Activity {
-	
+
+
+	private HashMap<String,Boolean> preferenceMap;
 	private TextView mParkText;
 	private TextView mMuseumText;
 	private TextView mShoppingText;
@@ -37,11 +41,16 @@ public class IndexActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_index);
-
 		bars = false;
 		parks = false;
 		museums = false;
 		monuments = false;
+
+        preferenceMap.put("Parks", false);
+        preferenceMap.put("Shopping", false);
+        preferenceMap.put("Museums", false);
+        preferenceMap.put("monuments", false);
+        preferenceMap.put("Bars", false);
 		
 		// Set CheckBoxes
 		parksCheckBox = (CheckBox)findViewById(R.id.checkbox_parks);
@@ -77,26 +86,31 @@ public class IndexActivity extends Activity {
 		parksCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 				setParks(isChecked);
+                preferenceMap.put("Parks",isChecked);
 			}
 		});
 		museumsCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 				setMuseums(isChecked);
+                preferenceMap.put("Museums",isChecked);
 			}
 		});
 		shoppingCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 				setShopping(isChecked);
+                preferenceMap.put("Shopping", isChecked);
 			}
 		});
 		monumentsCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 				setMonuments(isChecked);
+                preferenceMap.put("Monuments",isChecked);
 			}
 		});
        barsCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 setBars(isChecked);
+                preferenceMap.put("Bars",isChecked);
             }
         });
 
@@ -106,8 +120,10 @@ public class IndexActivity extends Activity {
 		mButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
+
 				Intent intent = new Intent(IndexActivity.this, RouteActivity.class);
 				// Put Extras here
+                intent.putExtra("EXTRA_PREFERENCE_MAP", preferenceMap);
 				startActivity(intent);
 			}
 		});
@@ -134,6 +150,5 @@ public class IndexActivity extends Activity {
 	public void setMonuments(boolean b) { monuments = b; }
 
     public void setBars(boolean b) { bars = b; }
-
 
 }
