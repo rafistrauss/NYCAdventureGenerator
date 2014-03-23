@@ -15,7 +15,7 @@ public class TabManager extends FragmentPagerAdapter {
 	public Fragment getItem(int arg0) {
 		switch (arg0) {
 		case 0:
-			return new MapFragment();
+			return new DrawMapFragment();
 		
 		case 1:
 			return new DirectionsFragment();
