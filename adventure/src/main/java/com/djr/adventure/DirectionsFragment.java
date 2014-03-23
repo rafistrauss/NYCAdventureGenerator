@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class DirectionsFragment extends Fragment {
 
     TextView mSearchResults;
-    String[] mBusinessInfo;
+
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
