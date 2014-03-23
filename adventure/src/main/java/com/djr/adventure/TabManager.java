@@ -2,6 +2,7 @@ package com.djr.adventure;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+
 import android.support.v4.app.FragmentPagerAdapter;
 
 public class TabManager extends FragmentPagerAdapter {
@@ -16,6 +17,7 @@ public class TabManager extends FragmentPagerAdapter {
 		switch (arg0) {
 		case 0:
 			return new DrawMapFragment();
+
 		
 		case 1:
 			return new DirectionsFragment();
