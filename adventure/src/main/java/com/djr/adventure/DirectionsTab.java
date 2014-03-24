@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class DirectionsFragment extends Fragment {
+public class DirectionsTab extends Fragment {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
