@@ -28,7 +28,7 @@ public class SplashActivity extends Activity {
 			public void run() {
 				try {
 					sleep(3000);
-					Intent intent = new Intent(SplashActivity.this,YelpActivity.class);
+					Intent intent = new Intent(SplashActivity.this, IndexActivity.class);
 					startActivity(intent);
 					SplashActivity.this.finish();
 				}

@@ -31,6 +31,8 @@ public class MapTab extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.map_fragment, parent, false);
 
+        mAcceptButton = (Button)v.findViewById(R.id.button_accept);
+        mRedoButton = (Button)v.findViewById(R.id.button_redo);
 
         Typeface roboto = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Regular.ttf");
 
