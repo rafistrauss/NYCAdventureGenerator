@@ -36,6 +36,16 @@
     </style>
 
 
+    <style name="SolidTheme" parent="@android:style/Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/SolidActionBar</item>
+        <item name="android:windowActionBarOverlay">false</item>
+    </style>
+
+    <style name="SolidActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">#9dbed7</item>
+        <item name="android:textColor">#000</item>
+    </style>
+
 
 
 </resources>
