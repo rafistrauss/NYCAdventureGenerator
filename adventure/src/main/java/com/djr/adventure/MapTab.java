@@ -1,5 +1,6 @@
 package com.djr.adventure;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,33 +10,34 @@ import android.widget.Button;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.*;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 
-public class DrawMapFragment extends Fragment {
+public class MapTab extends Fragment {
 
     private Button mRedoButton;
     private Button mAcceptButton;
 
     private GoogleMap mMap;
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-	}
+    }
 
-	@Override 
-	public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.map_fragment, parent, false);
 
 
-        //Typeface roboto = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Regular.ttf");
+        Typeface roboto = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Regular.ttf");
 
 
-        //mAcceptButton.setTypeface(roboto);
-        //mRedoButton.setTypeface(roboto);
-/*
+        mAcceptButton.setTypeface(roboto);
+        mRedoButton.setTypeface(roboto);
+
         mRedoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,15 +52,13 @@ public class DrawMapFragment extends Fragment {
                 // do something when accept is clicked
             }
         });
-*/
-        //setUpMapIfNeeded();
 
 
         setUpMapIfNeeded();
         mMap.addMarker(new MarkerOptions().position(new LatLng(40.769280, -74.005185)).title("New York City!"));
 
-		return v;
-	}
+        return v;
+    }
 
     private void setUpMapIfNeeded() {
         // Do a null check to confirm that we have not already instantiated the map.

@@ -16,7 +16,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class DirectionsFragment extends Fragment {
+public class DirectionsTab extends Fragment {
 
     TextView mSearchResults;
 
