@@ -41,8 +41,10 @@ public class YelpActivity extends Activity {
 
             @Override
             protected void onPostExecute(String result) {
-                mSearchResultsText.setText(result);
-                setProgressBarIndeterminateVisibility(false);
+                if (mSearchResultsText != null) {
+                    mSearchResultsText.setText(result);
+                    setProgressBarIndeterminateVisibility(false);
+                }
             }
         }.execute();
     }

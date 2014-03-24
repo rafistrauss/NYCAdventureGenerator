@@ -18,7 +18,6 @@ public class MapTab extends Fragment {
 
     private Button mRedoButton;
     private Button mAcceptButton;
-
     private GoogleMap mMap;
 
     @Override
@@ -36,7 +35,8 @@ public class MapTab extends Fragment {
 
         Typeface roboto = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Regular.ttf");
 
-
+        mRedoButton = (Button)v.findViewById(R.id.button_redo);
+        mAcceptButton = (Button)v.findViewById(R.id.button_accept);
         mAcceptButton.setTypeface(roboto);
         mRedoButton.setTypeface(roboto);
 
@@ -65,7 +65,7 @@ public class MapTab extends Fragment {
     private void setUpMapIfNeeded() {
         // Do a null check to confirm that we have not already instantiated the map.
         if (mMap == null) {
-            mMap = ((SupportMapFragment) getFragmentManager().findFragmentById(R.id.map_fragment)).getMap();
+            mMap = ((SupportMapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
             // Check if we were successful in obtaining the map.
             if (mMap != null) {
                 // The Map is verified. It is now safe to manipulate the map.
