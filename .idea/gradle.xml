@@ -7,8 +7,8 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="C:\Users\Rafi\Android_studio_projects\NYCAdventureGenerator" />
-            <option value="C:\Users\Rafi\Android_studio_projects\NYCAdventureGenerator\adventure" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/adventure" />
           </set>
         </option>
       </GradleProjectSettings>

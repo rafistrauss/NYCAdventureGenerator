@@ -1,12 +1,16 @@
 package com.djr.adventure;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 
+import java.util.HashMap;
+
 public class RouteActivity extends FragmentActivity {
 
+    private HashMap<String,Boolean> preferenceMap;
     private TabManager mAdapter;
     private ViewPager mViewPager;
     private ActionBar actionBar;
@@ -17,7 +21,9 @@ public class RouteActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_route);
 
-
+        preferenceMap = new HashMap<String, Boolean>();
+        Intent intent = getIntent();
+        preferenceMap = (HashMap<String, Boolean>)intent.getSerializableExtra("EXTRA_PREFERENCE_MAP");
 
         // Initialize
         actionBar = getActionBar();
