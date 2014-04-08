@@ -27,7 +27,7 @@ public class SplashActivity extends Activity {
 		Thread timer  = new Thread() {
 			public void run() {
 				try {
-					sleep(500);
+					sleep(100);
 					Intent intent = new Intent(SplashActivity.this,IndexActivity.class);
 					startActivity(intent);
 					SplashActivity.this.finish();

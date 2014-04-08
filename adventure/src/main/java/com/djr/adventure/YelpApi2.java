@@ -1,7 +1,7 @@
 package com.djr.adventure;
 
-import org.scribe.model.Token;
 import org.scribe.builder.api.DefaultApi10a;
+import org.scribe.model.Token;
 
 /**
  * Service provider for "2-legged" OAuth10a for Yelp API (version 2).
