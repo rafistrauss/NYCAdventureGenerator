@@ -18,5 +18,7 @@
     <string name="start">Create walk</string>
     <string name="audible_button">Redo</string>
     <string name="accept_button">Start</string>
+    <string name="text_direction">Turn right on W 185 St</string>
+    <string name="text_direction_info">0.2 mi</string>
 
 </resources>
