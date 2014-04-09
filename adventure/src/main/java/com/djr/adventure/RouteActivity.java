@@ -23,7 +23,7 @@ public class RouteActivity extends FragmentActivity {
 
         preferenceMap = new HashMap<String, Boolean>();
         Intent intent = getIntent();
-        preferenceMap = (HashMap<String, Boolean>)intent.getSerializableExtra("EXTRA_PREFERENCE_MAP");
+        preferenceMap = (HashMap<String, Boolean>)intent.getSerializableExtra("EXTRA_PREFERENCES_MAP");
 
         // Initialize
         actionBar = getActionBar();
