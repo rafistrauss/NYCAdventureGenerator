@@ -5,41 +5,27 @@ package com.djr.adventure;
  */
 public class Business {
     String name;
-    String address;
-    String city;
-    String state;
-    String country;
+    double longitude;
+    double latitude;
 
-    public Business(String name, String address, String city, String state, String country) {
+    public Business(String name, double longitude, double latitude) {
         this.name = name;
-        this.address = address;
-        this.city = city;
-        this.state = state;
-        this.country = country;
+        this.longitude = longitude;
+        this.latitude = latitude;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getAddress() {
-        return address;
-    }
+    public double getLongitude() { return longitude; }
 
-    public String getCity() {
-        return city;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public String getCountry() {
-        return country;
+    public double getLatitude() {
+        return latitude;
     }
 
     public String toString() {
-        String ret = name + "\n" + address + "\n" + city + "\n" + state + "\n" + country;
+        String ret = name + ": longitude=" + longitude + " latitude=" + latitude + "\n";
         return ret;
     }
 }

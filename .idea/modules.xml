@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/NYCAdventureGenerator.iml" filepath="$PROJECT_DIR$/NYCAdventureGenerator.iml" />
-      <module fileurl="file://$PROJECT_DIR$/adventure/src/main/java/Yelp/Yelp.iml" filepath="$PROJECT_DIR$/adventure/src/main/java/Yelp/Yelp.iml" />
       <module fileurl="file://$PROJECT_DIR$/adventure/adventure.iml" filepath="$PROJECT_DIR$/adventure/adventure.iml" />
     </modules>
   </component>
