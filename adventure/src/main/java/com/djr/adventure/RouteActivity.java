@@ -68,15 +68,10 @@ public class RouteActivity extends FragmentActivity {
 
 
 
-        //mSearchResults = (TextView) v.findViewById(R.id.searchResults);
-        //Intent i = getActivity().getIntent();
 
-
-
-//        HashMap<String, Boolean> params = (HashMap<String, Boolean>) i.getExtras().get("EXTRA_PREFERENCES_MAP");
         ArrayList<Business> bs = new ArrayList();
         for (String k : preferenceMap.keySet()) {
-            if(preferenceMap.get(k)) {
+            if (preferenceMap.get(k)) {
                 try {
 
                     YelpAsyncTask yat = new YelpAsyncTask();
@@ -85,26 +80,12 @@ public class RouteActivity extends FragmentActivity {
                     Business b = (Business) yat.get();
                     bs.add(b);
 
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     Log.d("YelpSearch", e.toString());
 
                 }
-//                   res += yelpSearch(k).toString();
             }
         }
-
-//        Intent directionsIntent = new Intent(RouteActivity.this, DirectionsTab.class);
-//        Intent mapIntent = new Intent(RouteActivity.this, MapTab.class);
-
-//        directionsIntent.putExtra("BUSINESS_LIST", bs);
-//        mapIntent.putExtra("BUSINESS_LIST", bs);
-//        startActivity(directionsIntent);
-
-
-
-        //mSearchResults.setText(res);
-
     }
 
     private class YelpAsyncTask extends AsyncTask<String, Void, Object> {
@@ -147,17 +128,10 @@ public class RouteActivity extends FragmentActivity {
         double lon = center.getDouble("longitude");
 
         JSONObject business = businesses.getJSONObject(randomBusiness);
-//        JSONObject address = business.getJSONObject("location");
 
         String name = business.getString("name");
-//        String street_address = address.getString("address");
-//        String city = address.getString("city");
-//        String state =  address.getString("state");
-//        String country = address.getString("country_code");
 
         Business ret = new Business(name, lon, lat);
-
-//        String longitude = regions.getJSONObject(0).getString("")
 
         return ret;
 
