@@ -1,15 +1,16 @@
 package com.djr.adventure;
 
+
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.AsyncTask;
-import android.support.v4.app.Fragment;
+import android.os.Bundle;
+import android.support.v4.app.ListFragment;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,16 +21,14 @@ import java.util.HashMap;
 import java.util.Random;
 
 
-public class DirectionsTab extends Fragment {
+public class DirectionsTab extends ListFragment {
 
     TextView mSearchResults;
-
+    private ArrayList<DirectionStep> steps;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-
 
 	}
 
@@ -38,7 +37,8 @@ public class DirectionsTab extends Fragment {
 		View v = inflater.inflate(R.layout.directions_fragment, parent, false);
         mSearchResults = (TextView) v.findViewById(R.id.searchResults);
         Intent i = getActivity().getIntent();
-
+        // get Direction Steps
+        ArrayList<DirectionStep> steps = (ArrayList<DirectionStep>)i.getExtras().get("EXTRA_DIRECTION_STEPS");
 
 
             HashMap<String, Boolean> params = (HashMap<String, Boolean>) i.getExtras().get("EXTRA_PREFERENCES_MAP");
@@ -194,6 +194,4 @@ public class DirectionsTab extends Fragment {
         }
         return TextUtils.join("\n", businessNames);
     }
-		
-	
 }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class RouteActivity extends FragmentActivity {
@@ -15,6 +16,8 @@ public class RouteActivity extends FragmentActivity {
     private ViewPager mViewPager;
     private ActionBar actionBar;
     private String[] tabs = {"Map", "Direction"};
+    private ArrayList<DirectionStep> mSteps;
+    private ArrayList<String> mRoute;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,8 @@ public class RouteActivity extends FragmentActivity {
         preferenceMap = new HashMap<String, Boolean>();
         Intent intent = getIntent();
         preferenceMap = (HashMap<String, Boolean>)intent.getSerializableExtra("EXTRA_PREFERENCES_MAP");
+
+
 
         // Initialize
         actionBar = getActionBar();
