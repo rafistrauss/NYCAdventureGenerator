@@ -15,6 +15,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 
 import java.util.HashMap;
+import java.util.ArrayList;
 
 public class IndexActivity extends Activity {
 
@@ -103,11 +104,16 @@ public class IndexActivity extends Activity {
 
         // Set onClickListeners
 
+        RouteData rd = new RouteData(preferencesMap, IndexActivity.this);
+        //final ArrayList<DirectionStep> steps = rd.getSteps();
+        final ArrayList<Business> locations = rd.getLocations();
+
         mButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(IndexActivity.this, RouteActivity.class);
-                intent.putExtra("EXTRA_PREFERENCES_MAP", preferencesMap);
+                //intent.putExtra("EXTRA_DIRECTIONS_STEPS", steps);
+                intent.putExtra("EXTRA_MAP_LOCATIONS", locations);
                 startActivity(intent);
             }
         });
