@@ -1,9 +1,11 @@
 package com.djr.adventure;
 
+import java.io.Serializable;
+
 /**
  * Created by Rafi on 3/23/2014.
  */
-public class Business {
+public class Business implements Serializable{
     String name;
     double longitude;
     double latitude;

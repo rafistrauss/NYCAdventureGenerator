@@ -1,5 +1,6 @@
 package com.djr.adventure;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -35,7 +36,15 @@ public class DirectionsTab extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.directions_fragment, parent, false);
         mSearchResults = (TextView) v.findViewById(R.id.searchResults);
-//        Intent i = getActivity().getIntent();
+        Intent i = getActivity().getIntent();
+        ArrayList<Business> businesses = (ArrayList<Business>)i.getExtras().get("EXTRA_DIRECTIONS_STEPS");
+
+        String ret = "";
+        for (Business b : businesses) {
+            ret+= b.toString() + "\n";
+        }
+        mSearchResults.setText(ret);
+
 
 
 /*
