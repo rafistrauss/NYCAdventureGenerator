@@ -117,7 +117,7 @@ public class IndexActivity extends Activity {
 
                 Intent intent = new Intent(IndexActivity.this, RouteActivity.class);
                 intent.putExtra("EXTRA_DIRECTIONS_STEPS", locations);
-                //intent.putExtra("EXTRA_MAP_LOCATIONS", locations);
+                intent.putExtra("EXTRA_MAP_LOCATIONS", locations);
                 startActivity(intent);
             }
         });

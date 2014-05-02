@@ -1,17 +1,22 @@
 package com.djr.adventure;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.ArrayList;
 
 
 public class MapTab extends Fragment {
@@ -55,7 +60,18 @@ public class MapTab extends Fragment {
 
 
         setUpMapIfNeeded();
-        mMap.addMarker(new MarkerOptions().position(new LatLng(40.769280, -74.005185)).title("New York City!"));
+
+
+        Intent i = getActivity().getIntent();
+        ArrayList<Business> businesses = (ArrayList<Business>)i.getExtras().get("EXTRA_MAP_LOCATIONS");
+
+        for (Business b : businesses) {
+            mMap.addMarker(new MarkerOptions().position(new LatLng(b.getLatitude(), b.getLongitude())).title(b.getName()));
+            Log.v("MAPTAB_LOCATIONS", b.toString());
+        }
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40.757110, -73.989680), 12.0f));
+
+        //mMap.addMarker(new MarkerOptions().position(new LatLng(40.769280, -74.005185)).title("New York City!"));
 
         return v;
     }
