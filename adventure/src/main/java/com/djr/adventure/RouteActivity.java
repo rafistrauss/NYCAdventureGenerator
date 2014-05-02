@@ -1,7 +1,6 @@
 package com.djr.adventure;
 
 import android.app.ActionBar;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -11,7 +10,7 @@ import java.util.HashMap;
 
 public class RouteActivity extends FragmentActivity {
 
-    private HashMap<String,Boolean> preferenceMap;
+    private HashMap<String, Boolean> preferenceMap;
     private TabManager mAdapter;
     private ViewPager mViewPager;
     private ActionBar actionBar;
@@ -24,15 +23,15 @@ public class RouteActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_route);
 
-        preferenceMap = new HashMap<String, Boolean>();
-        Intent intent = getIntent();
-        preferenceMap = (HashMap<String, Boolean>)intent.getSerializableExtra("EXTRA_PREFERENCES_MAP");
+//        preferenceMap = new HashMap<String, Boolean>();
+//        Intent intent = getIntent();
+//        preferenceMap = (HashMap<String, Boolean>) intent.getSerializableExtra("EXTRA_MAP_LOCATIONS");
 
 
 
         // Initialize
         actionBar = getActionBar();
-        mViewPager = (ViewPager)findViewById(R.id.pager);
+        mViewPager = (ViewPager) findViewById(R.id.pager);
         mAdapter = new TabManager(getSupportFragmentManager());
         mViewPager.setAdapter(mAdapter);
 
@@ -41,15 +40,15 @@ public class RouteActivity extends FragmentActivity {
 
         // tab listener that is called when the user changes tabs.
         ActionBar.TabListener tabListener = new ActionBar.TabListener() {
-            public void onTabSelected(ActionBar.Tab tab,android.app.FragmentTransaction ft) {
+            public void onTabSelected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
                 mViewPager.setCurrentItem(tab.getPosition());
             }
 
-            public void onTabUnselected(ActionBar.Tab tab,android.app.FragmentTransaction ft) {
+            public void onTabUnselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
                 // ignore
             }
 
-            public void onTabReselected(ActionBar.Tab tab,android.app.FragmentTransaction ft) {
+            public void onTabReselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
                 // ignore
             }
 
@@ -60,8 +59,10 @@ public class RouteActivity extends FragmentActivity {
             actionBar.addTab(
                     actionBar.newTab()
                             .setText(tab)
-                            .setTabListener(tabListener));
+                            .setTabListener(tabListener)
+            );
         }
 
     }
+
 }

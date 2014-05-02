@@ -104,22 +104,21 @@ public class IndexActivity extends Activity {
 
         // Set onClickListeners
 
+
+
         mButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                RouteData routeData = new RouteData(preferencesMap);
-                ArrayList<DirectionStep> steps = routeData.getmDirectionSteps();
-                ArrayList<String> route = routeData.getmRoute();
+                RouteData rd = new RouteData(preferencesMap, IndexActivity.this);
+                //final ArrayList<DirectionStep> steps = rd.getSteps();
+                final ArrayList<Business> locations = rd.getLocations();
+
 
                 Intent intent = new Intent(IndexActivity.this, RouteActivity.class);
-                intent.putExtra("EXTRA_DIRECTION_STEPS", steps);
+                intent.putExtra("EXTRA_DIRECTIONS_STEPS", locations);
+                intent.putExtra("EXTRA_MAP_LOCATIONS", locations);
                 startActivity(intent);
-
-        /*      Intent intent = new Intent(IndexActivity.this, RouteActivity.class);
-                intent.putExtra("EXTRA_PREFERENCES_MAP", preferencesMap);
-                startActivity(intent);
-        */
             }
         });
     }
