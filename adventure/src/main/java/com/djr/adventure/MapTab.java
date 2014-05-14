@@ -34,31 +34,8 @@ public class MapTab extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.map_fragment, parent, false);
 
-        mAcceptButton = (Button)v.findViewById(R.id.button_accept);
-        mRedoButton = (Button)v.findViewById(R.id.button_redo);
 
         Typeface roboto = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Regular.ttf");
-
-        mRedoButton = (Button)v.findViewById(R.id.button_redo);
-        mAcceptButton = (Button)v.findViewById(R.id.button_accept);
-        mAcceptButton.setTypeface(roboto);
-        mRedoButton.setTypeface(roboto);
-
-        mRedoButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // do something when redo is pressed
-                getActivity().finish();
-            }
-        });
-
-        mAcceptButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // do something when accept is clicked
-            }
-        });
-
 
         setUpMapIfNeeded();
 
