@@ -42,6 +42,8 @@ public class RouteData {
                     yat.execute(k);
 
                     Business b = (Business) yat.get();
+                    b.setCategory(k);
+                    Log.v("BUSINESS_CATEGORY", b.getCategory());
                     bs.add(b);
                 } catch (Exception e) {
                     Log.d("YelpSearch", e.toString());
@@ -112,17 +114,19 @@ public class RouteData {
 
             Log.v("BUSINESS_LOCATION", address + " " + city + " " + state + " " + zip);
 
+            String fullAddr = address + ", " + city + ", " + state + ", " + zip;
+
             Geocoder coder = new Geocoder(RouteData.this.myContext);
             try {
-                Address bAddress = coder.getFromLocationName(address + " " + city + " " + state + " " + zip, 1).get(0);
+                Address bAddress = coder.getFromLocationName(fullAddr, 1).get(0);
                 double lat = bAddress.getLatitude();
                 double lon = bAddress.getLongitude();
 
 
                 String name = business.getString("name");
 
-                Business ret = new Business(name, lon, lat);
-
+                Business ret = new Business(name, lon, lat, fullAddr);
+                Log.v("BUSINESS_INFO", ret.toString());
                 return ret;
 
             } catch (Exception ex){
