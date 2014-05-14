@@ -14,7 +14,7 @@ public class RouteActivity extends FragmentActivity {
     private TabManager mAdapter;
     private ViewPager mViewPager;
     private ActionBar actionBar;
-    private String[] tabs = {"Map", "Direction"};
+    private String[] tabs = {"Map", "Adventures"};
     private ArrayList<DirectionStep> mSteps;
     private ArrayList<String> mRoute;
 
