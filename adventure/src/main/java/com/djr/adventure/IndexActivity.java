@@ -1,8 +1,10 @@
 package com.djr.adventure;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -31,6 +33,7 @@ public class IndexActivity extends Activity {
     private CheckBox museumsCheckBox;
     private CheckBox shoppingCheckBox;
     private CheckBox monumentsCheckBox;
+    private ProgressDialog progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,15 +113,39 @@ public class IndexActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                RouteData rd = new RouteData(preferencesMap, IndexActivity.this);
-                //final ArrayList<DirectionStep> steps = rd.getSteps();
-                final ArrayList<Business> locations = rd.getLocations();
+
+                // Note: declare ProgressDialog progress as a field in your class.
+
+                progress = ProgressDialog.show(IndexActivity.this, "Finding Fun",
+                        "Finding some fun places for you...", true);
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run()
+                    {
+                        // do the thing that takes a long time
+                        RouteData rd = new RouteData(preferencesMap, IndexActivity.this);
+                        //final ArrayList<DirectionStep> steps = rd.getSteps();
+                        final ArrayList<Business> locations = rd.getLocations();
 
 
-                Intent intent = new Intent(IndexActivity.this, RouteActivity.class);
-                intent.putExtra("EXTRA_DIRECTIONS_STEPS", locations);
-                intent.putExtra("EXTRA_MAP_LOCATIONS", locations);
-                startActivity(intent);
+                        Intent intent = new Intent(IndexActivity.this, RouteActivity.class);
+                        intent.putExtra("EXTRA_DIRECTIONS_STEPS", locations);
+                        intent.putExtra("EXTRA_MAP_LOCATIONS", locations);
+                        startActivity(intent);
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run()
+                            {
+                                progress.dismiss();
+                            }
+                        });
+                    }
+                }).start();
+
+
+
             }
         });
     }
@@ -130,5 +157,6 @@ public class IndexActivity extends Activity {
         inflater.inflate(R.menu.index_activity_actions, menu);
         return super.onCreateOptionsMenu(menu);
     }
+
 
 }
