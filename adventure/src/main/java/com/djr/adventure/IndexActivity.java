@@ -2,8 +2,11 @@ package com.djr.adventure;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,6 +18,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -119,35 +123,48 @@ public class IndexActivity extends Activity {
                 progress = ProgressDialog.show(IndexActivity.this, "Finding Fun",
                         "Finding some fun places for you...", true);
 
-                new Thread(new Runnable() {
-                    @Override
-                    public void run()
-                    {
-                        // do the thing that takes a long time
-                        RouteData rd = new RouteData(preferencesMap, IndexActivity.this);
-                        //final ArrayList<DirectionStep> steps = rd.getSteps();
-                        final ArrayList<Business> locations = rd.getLocations();
+
+                if(isNetworkAvailable()) {
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            // do the thing that takes a long time
+                            RouteData rd = new RouteData(preferencesMap, IndexActivity.this);
+                            //final ArrayList<DirectionStep> steps = rd.getSteps();
+                            final ArrayList<Business> locations = rd.getLocations();
 
 
-                        Intent intent = new Intent(IndexActivity.this, RouteActivity.class);
-                        intent.putExtra("EXTRA_DIRECTIONS_STEPS", locations);
-                        intent.putExtra("EXTRA_MAP_LOCATIONS", locations);
-                        startActivity(intent);
+                            Intent intent = new Intent(IndexActivity.this, RouteActivity.class);
+                            intent.putExtra("EXTRA_DIRECTIONS_STEPS", locations);
+                            intent.putExtra("EXTRA_MAP_LOCATIONS", locations);
+                            startActivity(intent);
 
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run()
-                            {
-                                progress.dismiss();
-                            }
-                        });
-                    }
-                }).start();
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    progress.dismiss();
+                                }
+                            });
+                        }
+                    }).start();
 
+                }
+                else {              //Not connected to the internet
+                    progress.dismiss();
+                    Toast toast = Toast.makeText(IndexActivity.this, "You need to be connected to the Internet", Toast.LENGTH_SHORT);
 
+                    toast.show();
+                }
 
             }
         });
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
     @Override
